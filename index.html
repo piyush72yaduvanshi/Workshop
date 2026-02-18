@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+  <title>Registration Form</title>
+
+  <style>
+    body{
+      font-family:Arial, sans-serif;
+      background-color:#f2f2f2;
+    }
+
+    .container{
+      width:400px;
+      margin:auto;
+      background:white;
+      padding:20px;
+      border-radius:8px;
+      box-shadow:0px 0px 10px gray;
+    }
+
+    h2{
+      text-aling:centre;
+    }
+
+    input,select,textarea{
+      width:100%;
+      padding:px;
+      margin:5px 0 15px 0;
+    } 
+    
+    input [type="submit"]{
+      background-colour:blue;
+      colour:white;
+    }  
+
+    input[type="submit"]:hover{
+      backgroundcolour:darkblue;
+    }
+    </style>
+
+    <script>
+      function validateForm(){
+        let name= document.forms["myForm"]
+        ["name"].value;
+          if(name==""){
+          alert("name must be filled out");
+          return false;
+        }
+     }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Registration Form</h2>
+
+      <form name="myForm" onsubmit="return validate()">
+
+        <label>full name:</label>
+        <input type="text" name="name"required>
+
+        <label>email:</label>
+        <input type="email"name="email"required>
+
+        <label>Password:</label>
+        <input type="password" name="password"required>
+
+        <label>gender:</label>
+        <input type="radio"name="gender"
+   value="male">male
+        <input type="radio" name="gender"
+   value="female">female
+        <br><br>
+
+        <label>Course</label>
+        <select name="course">
+          <option>CSE</option>
+          <option>ECE</option>
+          <optin>Mechinical</optin>
+          <option>Civil</option>
+        </select>
+
+        <label>Address:</label>
+        <textarea rows="3"></textarea>
+        <input type="checkbox" name="terms" required>
+        <label>Agree to the Terms and conditions
+        </label>
+        <br><br>
+
+        <input type="submit" value="Register">
+
+      </form>
+    </div>
+ </body>
+</html>

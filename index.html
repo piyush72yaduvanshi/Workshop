@@ -1,94 +1,75 @@
 <!DOCTYPE html>
-<html>
-  <head> 
-  <title>Registration Form</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Date & Time App</title>
 
-  <style>
-    body{
-      font-family:Arial, sans-serif;
-      background-color:#f2f2f2;
-    }
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  font-family:Arial;
+}
 
-    .container{
-      width:400px;
-      margin:auto;
-      background:white;
-      padding:20px;
-      border-radius:8px;
-      box-shadow:0px 0px 10px gray;
-    }
+.container{
+  background:white;
+  padding:30px 50px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
 
-    h2{
-      text-aling:centre;
-    }
+h1{
+  margin-bottom:15px;
+}
 
-    input,select,textarea{
-      width:100%;
-      padding:px;
-      margin:5px 0 15px 0;
-    } 
-    
-    input [type="submit"]{
-      background-colour:blue;
-      colour:white;
-    }  
+#time{
+  font-size:32px;
+  color:#333;
+}
 
-    input[type="submit"]:hover{
-      backgroundcolour:darkblue;
-    }
-    </style>
+#date{
+  font-size:18px;
+  color:gray;
+  margin-top:5px;
+}
+</style>
+</head>
 
-    <script>
-      function validateForm(){
-        let name= document.forms["myForm"]
-        ["name"].value;
-          if(name==""){
-          alert("name must be filled out");
-          return false;
-        }
-     }
-    </script>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Registration Form</h2>
+<body>
 
-      <form name="myForm" onsubmit="return validate()">
+<div class="container">
+  <h1>Current Date & Time</h1>
+  <div id="time"></div>
+  <div id="date"></div>
+</div>
 
-        <label>full name:</label>
-        <input type="text" name="name"required>
+<script>
+function showDateTime(){
+  const now = new Date();
 
-        <label>email:</label>
-        <input type="email"name="email"required>
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
 
-        <label>Password:</label>
-        <input type="password" name="password"required>
+  hours = hours < 10 ? "0"+hours : hours;
+  minutes = minutes < 10 ? "0"+minutes : minutes;
+  seconds = seconds < 10 ? "0"+seconds : seconds;
 
-        <label>gender:</label>
-        <input type="radio"name="gender"
-   value="male">male
-        <input type="radio" name="gender"
-   value="female">female
-        <br><br>
+  document.getElementById("time").innerText =
+    hours + ":" + minutes + ":" + seconds;
 
-        <label>Course</label>
-        <select name="course">
-          <option>CSE</option>
-          <option>ECE</option>
-          <optin>Mechinical</optin>
-          <option>Civil</option>
-        </select>
+  document.getElementById("date").innerText =
+    now.toDateString();
+}
 
-        <label>Address:</label>
-        <textarea rows="3"></textarea>
-        <input type="checkbox" name="terms" required>
-        <label>Agree to the Terms and conditions
-        </label>
-        <br><br>
+setInterval(showDateTime,1000);
+showDateTime();
+</script>
 
-        <input type="submit" value="Register">
-
-      </form>
-    </div>
- </body>
+</body>
 </html>
